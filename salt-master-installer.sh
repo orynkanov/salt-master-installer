@@ -15,6 +15,7 @@ elif [[ $OSVER -eq 8 ]]; then
     dnf install -y salt-master salt-api salt-ssh
 fi
 
-systemctl enable salt-master
-systemctl enable salt-api
-firewall-cmd --permanent --add-service=salt-master --now
+systemctl enable salt-master --now
+systemctl enable salt-api --now
+firewall-cmd --permanent --add-service=salt-master
+firewall-cmd --add-service=salt-master
