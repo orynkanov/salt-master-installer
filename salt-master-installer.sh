@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPTDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
 if [[ ! -f /etc/centos-release ]]; then
     echo OS not CentOS. This script only for CentOS!
     exit 1
@@ -14,6 +16,8 @@ elif [[ $OSVER -eq 8 ]]; then
     dnf clean all
     dnf install -y salt-master salt-api salt-ssh
 fi
+
+cp "$SCRIPTDIR"/master.d/master.conf /etc/salt/master.d/master.conf
 
 systemctl enable salt-master --now
 systemctl enable salt-api --now
