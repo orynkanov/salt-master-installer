@@ -21,6 +21,7 @@ elif [[ $OSVER -eq 8 ]]; then
 fi
 
 cp "$SCRIPTDIR"/master.d/* /etc/salt/master.d/
+cp "$SCRIPTDIR"/bin/*.sh /usr/local/bin/
 
 systemctl enable salt-master --now
 systemctl enable salt-api --now
