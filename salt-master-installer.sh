@@ -23,6 +23,9 @@ fi
 cp "$SCRIPTDIR"/master.d/* /etc/salt/master.d/
 cp "$SCRIPTDIR"/bin/*.sh /usr/local/bin/
 
+mkdir -p /srv/salt/states
+mkdir -p /srv/salt/pillars
+
 systemctl enable salt-master --now
 systemctl enable salt-api --now
 firewall-cmd --permanent --add-service=salt-master
